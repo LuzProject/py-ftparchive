@@ -1,0 +1,46 @@
+name: Build package
+
+env:
+  project-link: https://github.com/sileo/repo
+
+on:
+  release:
+    types: [published]
+
+  workflow_dispatch:
+      
+  push:
+    branches:
+      - checkra1n
+      - main
+      - refactor
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        id: setup-python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+    
+      - name: Install dependencies
+        run: poetry install
+        
+      - name: Clone project
+        run: |
+            git clone ${{ env.project-link }}
+    
+      - name: Build packages
+        run: cd repo && poetry run ftparchive packages pool/
