@@ -44,5 +44,5 @@ jobs:
             wget ${{ env.zip-link }}
             unzip repo.zip
     
-      - name: Build packages
+      - name: Build repo
         run: cd repo && bash repo.sh
