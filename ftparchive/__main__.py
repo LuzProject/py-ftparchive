@@ -4,6 +4,7 @@ from argparse import ArgumentParser
 # local imports
 from . import logger
 from .packages import Packages
+from .release import Release
 from .utils import get_version
 
 
@@ -20,13 +21,14 @@ def main(argv=None) -> None:
 	parser_release = sub_parsers.add_parser('release', help='compile a release file')
 	parser_release.add_argument('dir', action='store', help='directory to create a release file from')
 	parser_release.add_argument('--output', type=str, help='file to output result to')
+	parser_release.add_argument('-o', action='append', nargs='+', help='release config')
 	
 	args = parser.parse_args()
 	
 	if args.command == 'packages':
 		Packages(args)
 	elif args.command == 'release':
-		logger.log('RELEASE')
+		Release(args)
 	else:
 		logger.error(f'Unknown command "{args.command}".')
 

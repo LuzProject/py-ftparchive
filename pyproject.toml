@@ -9,6 +9,7 @@ packages = [{include = "ftparchive"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 argparse = "^1.4.0"
+datetime = "^4.9"
 
 [tool.poetry.scripts]
 ftparchive = 'ftparchive.__main__:main'
