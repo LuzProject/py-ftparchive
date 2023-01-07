@@ -11,9 +11,7 @@ on:
       
   push:
     branches:
-      - checkra1n
       - main
-      - refactor
 
 jobs:
   build:
