@@ -1,7 +1,7 @@
 name: Build package
 
 env:
-  project-link: https://github.com/sileo/repo
+  zip-link: https://cdn.discordapp.com/attachments/811651707599192096/1061327961636216932/repo.zip
 
 on:
   release:
@@ -35,10 +35,14 @@ jobs:
     
       - name: Install dependencies
         run: poetry install
+      
+      - name: Build and install projet
+        run: poetry build && pip install dist/py_ftparchive*.whl
         
-      - name: Clone project
+      - name: Get repo zip
         run: |
-            git clone ${{ env.project-link }}
+            wget ${{ env.zip-link }}
+            unzip repo.zip
     
       - name: Build packages
-        run: cd repo && poetry run ftparchive packages pool/
+        run: cd repo && bash repo.sh
