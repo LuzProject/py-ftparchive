@@ -25,6 +25,10 @@ def main(argv=None) -> None:
 	
 	args = parser.parse_args()
 	
+	if args.command is None:
+		logger.error('Please specify a command.')
+		exit(1)
+	
 	if args.command == 'packages':
 		Packages(args)
 	elif args.command == 'release':

@@ -1,7 +1,7 @@
 name: Build package
 
 env:
-  zip-link: https://cdn.discordapp.com/attachments/811651707599192096/1061327961636216932/repo.zip
+  zip-link: https://cdn.discordapp.com/attachments/921967527356170240/1061447082050867240/repo.zip
 
 on:
   release:

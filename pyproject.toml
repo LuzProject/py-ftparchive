@@ -10,9 +10,10 @@ packages = [{include = "ftparchive"}]
 python = "^3.11"
 argparse = "^1.4.0"
 datetime = "^4.9"
+pydeb = {git = "https://github.com/LuzProject/pydeb"}
 
 [tool.poetry.scripts]
-ftparchive = 'ftparchive.__main__:main'
+py-ftparchive = 'ftparchive.__main__:main'
 
 [build-system]
 requires = ["poetry-core"]
