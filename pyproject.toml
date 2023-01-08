@@ -4,7 +4,7 @@ version = "0.0.1"
 description = ""
 authors = ["ja1dan <ajaidan0@gmail.com>"]
 readme = "README.md"
-packages = [{include = "ftparchive"}]
+packages = [{include = "py_ftparchive"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -13,7 +13,7 @@ datetime = "^4.9"
 pydeb = {git = "https://github.com/LuzProject/pydeb"}
 
 [tool.poetry.scripts]
-py-ftparchive = 'ftparchive.__main__:main'
+py-ftparchive = 'py_ftparchive.__main__:main'
 
 [build-system]
 requires = ["poetry-core"]

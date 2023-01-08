@@ -10,6 +10,8 @@ from .utils import get_version
 
 def main(argv=None) -> None:
 	parser = ArgumentParser()
+	parser.add_argument('-v', '--version', action='version', version=f'py-ftparchive v{get_version()}',
+	help='show current version and exit')
 	sub_parsers = parser.add_subparsers(help='sub-command help', dest='command')
 	
 	# packages

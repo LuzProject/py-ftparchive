@@ -2,6 +2,7 @@
 from pathlib import Path
 from pkg_resources import get_distribution
 from shutil import which
+from subprocess import getoutput
 from sys import stdout
 from typing import Union
 
@@ -33,8 +34,7 @@ def remove_log_stdout(toremove: str):
 def get_version() -> str:
 	# Check if running from a git repository,
 	# then, construct version in the following format: version-branch-hash
-	#if Path('.git').exists():
-	#	return f'{get_distribution(__package__).version}-{getoutput('git rev-parse --abbrev-ref HEAD')}-{getoutput('git rev-parse --short HEAD')}'
-	#else:
-	#	return get_distribution(__package__).version
-	return '0.0.1'
+	if Path('.git').exists():
+		return f'{get_distribution(__package__).version}-{getoutput("git rev-parse --abbrev-ref HEAD")}-{getoutput("git rev-parse --short HEAD")}'
+	else:
+		return get_distribution(__package__).version
