@@ -15,7 +15,9 @@ class Release:
 		self.output: str = args.output
 		
 		# config
-		self.config: list = list(map(lambda x: x[0].replace('APT::FTPArchive::Release::', ''), args.o))
+		self.config: list = []
+		if args.o:
+			self.config = list(map(lambda x: x[0].replace('APT::FTPArchive::Release::', ''), filter(lambda x: x[0].startswith('APT::FTPArchive::Release::'), args.o)))
 		
 		self.release()
 	

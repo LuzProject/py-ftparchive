@@ -46,3 +46,6 @@ jobs:
     
       - name: Build repo
         run: cd repo && bash repo.sh
+      
+      - name: Log created files
+        run: cat repo/Release && cat repo/Packages
