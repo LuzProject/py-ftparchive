@@ -4,6 +4,7 @@ from datetime import datetime
 from hashlib import md5, sha1, sha256, sha512
 from os import listdir, path
 from pathlib import Path
+from time import gmtime, strftime
 
 class Release:
 	def __init__(self, args: Namespace):
@@ -59,6 +60,9 @@ class Release:
 		# add config first
 		for obj in self.config:
 			release += f'{obj.split("=")[0]}: {obj.split("=")[1]}\n'
+		
+		# add date
+		release += f'Date: {datetime.now().strftime("%a, %d %b %Y %H:%M:%S")} {strftime("%z", gmtime())}\n'
 			
 		# iterate through files
 		for file in listdir(self.dir):
@@ -86,9 +90,6 @@ class Release:
 			for hash in hashes:
 				release += f' {hash.get("sha512").hexdigest()} {(7 - len(str(hash.get("size")))) * " "} {hash.get("size")} {hash.get("filename")}\n'
 			
-		
-		# add date
-		#release += f'Date: {datetime.now().strftime("%a, %d %b %H:%M:%S %z")}'
 		
 		# log if necessary
 		if self.output is None:
