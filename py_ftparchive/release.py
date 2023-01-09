@@ -2,7 +2,7 @@
 from argparse import Namespace
 from datetime import datetime
 from hashlib import md5, sha1, sha256, sha512
-from os import listdir, path
+from os import getcwd, listdir, path, remove
 from pathlib import Path
 from time import gmtime, strftime
 
@@ -21,10 +21,9 @@ class Release:
 		
 		self.release()
 	
-	def __hash(self, file: str):
+	def __hash(self, file: str, release: bool = False):
 		hashed = {
-			'filename': Path(file).name,
-			'filepath': file,
+			'filename': Path(file).name if not release else 'Release',
 			'size': path.getsize(file),
 			'md5': md5(),
 			'sha1': sha1(),
@@ -65,7 +64,13 @@ class Release:
 		
 		# add date
 		release += f'Date: {datetime.now().strftime("%a, %d %b %Y %H:%M:%S")} {strftime("%z", gmtime())}\n'
-			
+		with open('.release.tmp', 'w') as f:
+			f.write(release)
+			f.close()
+		
+		hashes.append(self.__hash('.release.tmp', release=True))
+		remove('.release.tmp')
+		
 		# iterate through files
 		for file in listdir(self.dir):
 			if file == 'Packages' or file.startswith('Packages.'):
