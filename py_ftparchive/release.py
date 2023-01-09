@@ -69,26 +69,22 @@ class Release:
 			# md5
 			release += 'MD5sum:\n'
 			for hash in hashes:
-				whitespace = '			    '
-				release += f' {hash.get("md5").hexdigest()} {whitespace.replace(" ", "", len(str(hash.get("size"))))} {hash.get("size")} {hash.get("filename")}\n'
+				release += f' {hash.get("md5").hexdigest()} {(7 - len(str(hash.get("size")))) * " "} {hash.get("size")} {hash.get("filename")}\n'
 			
 			# sha1
 			release += 'SHA1:\n'
 			for hash in hashes:
-				whitespace = '			    '
-				release += f' {hash.get("sha1").hexdigest()} {whitespace.replace(" ", "", len(str(hash.get("size"))))} {hash.get("size")} {hash.get("filename")}\n'
+				release += f' {hash.get("sha1").hexdigest()} {(7 - len(str(hash.get("size")))) * " "} {hash.get("size")} {hash.get("filename")}\n'
 			
 			# sha256
 			release += 'SHA256:\n'
 			for hash in hashes:
-				whitespace = '			    '
-				release += f' {hash.get("sha256").hexdigest()} {whitespace.replace(" ", "", len(str(hash.get("size"))))} {hash.get("size")} {hash.get("filename")}\n'
+				release += f' {hash.get("sha256").hexdigest()} {(7 - len(str(hash.get("size")))) * " "} {hash.get("size")} {hash.get("filename")}\n'
 				
 			# sha512
 			release += 'SHA512:\n'
 			for hash in hashes:
-				whitespace = '			    '
-				release += f' {hash.get("sha512").hexdigest()} {whitespace.replace(" ", "", len(str(hash.get("size"))))} {hash.get("size")} {hash.get("filename")}\n'
+				release += f' {hash.get("sha512").hexdigest()} {(7 - len(str(hash.get("size")))) * " "} {hash.get("size")} {hash.get("filename")}\n'
 			
 		
 		# add date
