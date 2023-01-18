@@ -28,7 +28,7 @@ def main(argv=None) -> None:
 	args = parser.parse_args()
 	
 	if args.command is None:
-		logger.error('Please specify a command.')
+		logger.error('Please specify an operation.')
 		exit(1)
 	
 	if args.command == 'packages':
