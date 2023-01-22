@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "py-ftparchive"
-version = "0.0.1"
+version = "1.0.0"
 description = ""
 authors = ["ja1dan <ajaidan0@gmail.com>"]
 readme = "README.md"
 packages = [{include = "py_ftparchive"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.7"
 argparse = "^1.4.0"
 datetime = "^4.9"
 pydeb = {git = "https://github.com/LuzProject/pydeb"}
